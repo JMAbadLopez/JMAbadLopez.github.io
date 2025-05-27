@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: ABR en Proyecto Intermodular DAM/DAW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; 
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; 
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2c5282;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2b6cb0;
+        }
+        .kpi-label {
+            font-size: 0.875rem;
+            color: #4a5568;
+            margin-top: 0.25rem;
+        }
+        .flowchart-step {
+            background-color: #ebf8ff;
+            border: 2px solid #90cdf4;
+            color: #2c5282;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            font-weight: 600;
+            flex: 1;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.3;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #2c5282;
+            margin: 0 0.75rem;
+            align-self: center;
+            font-weight: bold;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #4299e1;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.625rem;
+            top: 0.25rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            background-color: #4299e1;
+            border: 3px solid white;
+        }
+        .sticky-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* New styles for table consistency */
+        table th, table td {
+            vertical-align: top; /* Align content to the top of the cell */
+        }
+        table ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.25rem; /* Standard padding for lists */
+        }
+        table ul li {
+            margin-bottom: 0.25rem; /* Small spacing between list items */
+        }
+        table ul li:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 text-gray-800">
+
+    <header class="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-6 md:p-10 text-center shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-bold mb-2">Innovación en la FP: Aprendizaje Basado en Retos</h1>
+        <p class="text-lg md:text-xl">Aplicación en los Ciclos de Grado Superior DAM y DAW (Primer Curso)</p>
+    </header>
+
+    <nav class="sticky-nav p-3 mb-8">
+        <ul class="container mx-auto flex flex-wrap justify-center space-x-2 sm:space-x-4 text-sm">
+            <li><a href="#introduccion" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">Introducción</a></li>
+            <li><a href="#marco-normativo" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">Marco Normativo</a></li>
+            <li><a href="#que-es-abr" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">¿Qué es ABR?</a></li>
+            <li><a href="#proyecto-intermodular" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">Proyecto Intermodular</a></li>
+            <li><a href="#retos-propuestos" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">Retos</a></li>
+            <li><a href="#planificacion" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">Planificación</a></li>
+            <li><a href="#evaluacion" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">Evaluación</a></li>
+            <li><a href="#impacto" class="text-blue-600 hover:text-blue-800 font-semibold py-1 px-2 rounded-md hover:bg-blue-100 transition-colors">Impacto</a></li>
+        </ul>
+    </nav>
+
+    <main class="container mx-auto p-4 md:p-6">
+
+        <section id="introduccion" class="mb-12 scroll-mt-20">
+            <h2 class="section-title text-center">1. El Nuevo Paradigma de la Formación Profesional</h2>
+            <div class="card max-w-3xl mx-auto">
+                <p class="text-lg mb-4 text-gray-700">
+                    La Formación Profesional (FP) en España se transforma con la <span class="font-semibold text-blue-700">Ley Orgánica 3/2022 (LOFP)</span> y la <span class="font-semibold text-blue-700">LOMLOE</span>. El objetivo es un sistema único, flexible y adaptado a las necesidades de cualificación y del mercado laboral. Se promueve el desarrollo personal y profesional continuo.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center mt-6">
+                    <div class="bg-blue-100 p-4 rounded-lg">
+                        <div class="kpi-value">🎯</div>
+                        <p class="font-semibold text-blue-700 mt-2">Aprendizaje Activo</p>
+                        <p class="kpi-label">El alumnado es protagonista, experimentando para aprender y desarrollar competencias clave.</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded-lg">
+                        <div class="kpi-value">🚀</div>
+                        <p class="font-semibold text-blue-700 mt-2">FP Dual Generalizada</p>
+                        <p class="kpi-label">Prácticas desde el primer año, integrando teoría y aplicación real en el entorno laboral.</p>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-700">
+                    En este contexto, el <span class="font-semibold text-blue-700">Aprendizaje Basado en Retos (ABR)</span> surge como una metodología ideal para materializar estos cambios, conectando los objetivos curriculares con experiencias de aprendizaje significativas y preparando al alumnado para el mundo profesional.
+                </p>
+            </div>
+        </section>
+
+        <section id="marco-normativo" class="mb-12 scroll-mt-20">
+            <h2 class="section-title text-center">2. Marco Normativo y Competencias Generales</h2>
+            <div class="card max-w-4xl mx-auto">
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">Marco Normativo y Legal:</h3>
+                <ul class="list-disc list-inside text-gray-700 mb-6">
+                    <li><span class="font-semibold text-blue-600">Ley Orgánica 3/2022 (LOFP):</span> Ordena e integra la Formación Profesional, buscando un sistema único, flexible y adaptado a las necesidades de cualificación y empleo. Generaliza la FP Dual.</li>
+                    <li><span class="font-semibold text-blue-600">Ley Orgánica 3/2020 (LOMLOE):</span> Modifica la Ley de Educación, promoviendo un aprendizaje activo, inclusivo y donde el alumno es protagonista de su propio proceso.</li>
+                    <li>Estas leyes, junto a los <span class="font-semibold text-blue-600">Reales Decretos de los títulos</span> (R.D. 450/2010 DAM, R.D. 686/2010 DAW, actualizados por R.D. 405/2023), establecen el "qué" y el "cómo" de la FP, haciendo del ABR un puente metodológico ideal.</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">Competencias Generales del Grado (DAM y DAW):</h3>
+                <p class="text-lg mb-4 text-gray-700">
+                    El Proyecto Intermodular y los retos se centran en el desarrollo de las competencias generales de los títulos, que son el eje de la formación:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <h4 class="font-semibold text-blue-700 mb-1">DAM (Desarrollo de Aplicaciones Multiplataforma)</h4>
+                        <p class="text-sm text-gray-600">
+                            Desarrollar, implantar, documentar y mantener aplicaciones informáticas multiplataforma, utilizando tecnologías y entornos de desarrollo específicos.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <h4 class="font-semibold text-blue-700 mb-1">DAW (Desarrollo de Aplicaciones Web)</h4>
+                        <p class="text-sm text-gray-600">
+                            Desarrollar, implantar y mantener aplicaciones web, gestionando entornos de desarrollo y operación, y asegurando la calidad del software.
+                        </p>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-700">
+                    Ambos ciclos comparten una base sólida en programación, bases de datos y sistemas, lo que permite un proyecto común con enfoques específicos en la fase de implementación.
+                </p>
+            </div>
+        </section>
+
+        <section id="que-es-abr" class="mb-12 scroll-mt-20">
+            <h2 class="section-title text-center">3. ¿Qué es el Aprendizaje Basado en Retos (ABR)?</h2>
+            <div class="card max-w-4xl mx-auto">
+                <p class="text-lg mb-6 text-gray-700">
+                    El ABR (Challenge Based Learning - CBL) es un enfoque de aprendizaje activo, colaborativo y práctico. Los estudiantes se involucran en la identificación y resolución de <span class="font-semibold text-blue-700">desafíos del mundo real</span>, desarrollando una comprensión profunda y habilidades aplicadas.
+                </p>
+                
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">Fases Clave del ABR:</h3>
+                <div class="flex flex-col md:flex-row justify-around items-stretch space-y-4 md:space-y-0 md:space-x-4 mb-8">
+                    <div class="flowchart-step"><span>💡</span><br>Engage<br><small>Identificar Grandes Ideas y Retos Concretos.</small></div>
+                    <div class="flowchart-arrow hidden md:flex items-center">➡️</div>
+                    <div class="flowchart-step"><span>🔍</span><br>Investigate<br><small>Formular Preguntas Esenciales y Buscar Información.</small></div>
+                    <div class="flowchart-arrow hidden md:flex items-center">➡️</div>
+                    <div class="flowchart-step"><span>🛠️</span><br>Act<br><small>Desarrollar, Implementar y Evaluar Soluciones.</small></div>
+                </div>
+
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">Beneficios del ABR:</h3>
+                <ul class="list-none space-y-3">
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">📈</span> <div><span class="font-semibold">Motivación y Compromiso:</span> Retos relevantes que despiertan la curiosidad.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🧠</span> <div><span class="font-semibold">Comprensión Profunda:</span> Aplicación práctica que consolida el aprendizaje.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🤝</span> <div><span class="font-semibold">Competencias Transversales:</span> Comunicación, colaboración, pensamiento crítico, creatividad.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🌍</span> <div><span class="font-semibold">Conexión con el Mundo Real:</span> Mejora la empleabilidad y la preparación profesional.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🎯</span> <div><span class="font-semibold">Aprendizaje Personalizado:</span> Adaptación a ritmos y fomento de la resiliencia.</div></li>
+                </ul>
+                 <p class="mt-6 text-gray-700">
+                    <span class="font-semibold">Rol del Docente:</span> Guía, facilitador, dinamizador. <br>
+                    <span class="font-semibold">Rol del Alumnado:</span> Protagonista activo, responsable de su aprendizaje.
+                </p>
+            </div>
+        </section>
+
+        <section id="proyecto-intermodular" class="mb-12 scroll-mt-20">
+            <h2 class="section-title text-center">4. El Proyecto Intermodular: Eje para la Integración</h2>
+            <div class="card max-w-4xl mx-auto">
+                <p class="text-lg mb-6 text-gray-700">
+                    El módulo de <span class="font-semibold text-blue-700">Proyecto Intermodular</span> es clave en los Grados Superiores DAM y DAW. Su objetivo es integrar conocimientos y habilidades de diversos módulos en un proyecto que simula una situación profesional real. Es el "lienzo" perfecto para el ABR, ya que esta metodología exige aplicar conocimientos de múltiples disciplinas.
+                </p>
+                <h3 class="text-xl font-semibold mb-4 text-blue-700">Módulos Implicados en el Primer Curso (DAM/DAW):</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>Sistemas Informáticos:</strong> Infraestructura y configuración.</div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>Bases de Datos:</strong> Diseño y gestión de datos.</div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>Programación:</strong> Lógica de negocio y algoritmos.</div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>Entornos de Desarrollo:</strong> Herramientas y control de versiones.</div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>Lenguajes de Marcas:</strong> Estructura de datos e interfaz.</div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>FOL:</strong> Gestión de equipos y aspectos legales.</div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>Itinerario Empleabilidad:</strong> Habilidades blandas.</div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><strong>Inglés Técnico:</strong> Documentación y recursos.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="retos-propuestos" class="mb-12 scroll-mt-20">
+            <h2 class="section-title text-center">5. El Proyecto Único: Fases de Retos (Primer Curso DAM/DAW)</h2>
+            <p class="text-center text-lg mb-8 max-w-2xl mx-auto text-gray-700">Un proyecto único dividido en dos fases de una semana (diciembre y mayo), diseñadas para ser desafiantes, realistas e integrar todos los módulos de forma progresiva.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-semibold mb-3 text-blue-700">Fase 1 (Diciembre): Análisis y Diseño Inicial</h3>
+                    <p class="mb-4 text-gray-700">
+                        <span class="font-semibold">Gran Idea:</span> Optimizar la gestión y comunicación interna del centro educativo a través de una solución digital. <br>
+                        <span class="font-semibold">Reto Concreto:</span> Realizar el análisis de requisitos detallado, el diseño lógico y físico de la base de datos, la arquitectura inicial y los prototipos de interfaz de usuario (wireframes/mockups) para una aplicación que resuelva una necesidad específica del centro (ej. gestión de aulas, incidencias, actividades). El enfoque es la planificación y el diseño.
+                    </p>
+                    <div class="chart-container mx-auto h-64 md:h-72">
+                        <canvas id="reto1Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-center mt-2 text-gray-600">Distribución conceptual del esfuerzo en la Fase 1.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-2xl font-semibold mb-3 text-blue-700">Fase 2 (Mayo): Implementación y Pruebas Finales</h3>
+                    <p class="mb-4 text-gray-700">
+                        <span class="font-semibold">Gran Idea:</span> Consolidar y desplegar una solución digital funcional para la comunidad educativa. <br>
+                        <span class="font-semibold">Reto Concreto:</span> Desarrollar la implementación completa de la aplicación diseñada en la Fase 1, incluyendo la programación de todas las funcionalidades, la integración de la base de datos, la mejora de la interfaz de usuario, la implementación de seguridad (autenticación/autorización) y la fase de pruebas y preparación para un despliegue simulado.
+                    </p>
+                    <div class="chart-container mx-auto h-64 md:h-72">
+                        <canvas id="reto2Chart"></canvas>
+                    </div>
+                    <p class="text-sm text-center mt-2 text-gray-600">Distribución conceptual del esfuerzo en la Fase 2.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="planificacion" class="mb-12 scroll-mt-20">
+            <h2 class="section-title text-center">6. Planificación Semanal Detallada de una Fase de Reto (1 Semana)</h2>
+            <div class="card max-w-4xl mx-auto">
+                <p class="text-lg mb-6 text-gray-700">
+                    Esta planificación semanal detalla las actividades clave, los módulos implicados y los entregables esperados para cada día de una fase de reto, integrando las experiencias de los retos "Organigrama Empresarial" y "Gestión de Nóminas".
+                </p>
+                <h3 class="text-xl font-semibold mb-4 text-blue-700">Fase 1 (Diciembre): Análisis y Diseño Inicial</h3>
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full text-left table-auto border-collapse">
+                        <thead>
+                            <tr class="bg-blue-200 text-blue-800">
+                                <th class="p-3 border border-blue-300">Día</th>
+                                <th class="p-3 border border-blue-300">Actividades Clave del Equipo</th>
+                                <th class="p-3 border border-blue-300">Módulos / Competencias Implicadas</th>
+                                <th class="p-3 border border-blue-300">Resultados de Aprendizaje (RA) / Criterios de Evaluación (CE) / Entregables</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-blue-50">
+                                <td class="p-3 border border-blue-200 font-semibold">Lunes</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Engage & Investigate (Inicial):</strong>
+                                    <ul>
+                                        <li>Presentación del reto y casos de uso.</li>
+                                        <li>Brainstorming grupal, elección de la necesidad del centro.</li>
+                                        <li>Investigación de requisitos funcionales y no funcionales.</li>
+                                        <li>Formación y asignación de roles (Coordinador, Portavoz, etc.).</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">FOL:</strong> Trabajo en equipo, roles, comunicación.</li>
+                                        <li><strong class="text-blue-600">Itinerario Empleabilidad:</strong> Comunicación interpersonal.</li>
+                                        <li><strong class="text-blue-600">Transversal:</strong> Resolución de problemas, análisis.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Acta de reunión inicial, contrato de equipo, roles definidos.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>FOL: Organiza y gestiona equipos de trabajo.</small></li>
+                                                <li><small>Itinerario: Se comunica eficazmente en el equipo.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-3 border border-blue-200 font-semibold">Martes</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Investigate & Act (Diseño Inicial):</strong>
+                                    <ul>
+                                        <li>Diseño del modelo de la base de datos (diagrama entidad-relación simple).</li>
+                                        <li>Diseño de la interfaz de usuario básica (bocetos, wireframes o mockups).</li>
+                                        <li>Propuesta de arquitectura cliente/servidor (SO, SGBD, conectividad, red VLSM).</li>
+                                        <li>Diseño de las primeras clases con sus propiedades y métodos iniciales.</li>
+                                        <li>Configuración del entorno de desarrollo y repositorio Git.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">Bases de Datos:</strong> Diseño de modelos de datos.</li>
+                                        <li><strong class="text-blue-600">Lenguajes de Marcas:</strong> Diseño de interfaces.</li>
+                                        <li><strong class="text-blue-600">Sistemas Informáticos:</strong> Configuración de entornos.</li>
+                                        <li><strong class="text-blue-600">Entornos de Desarrollo:</strong> Uso de herramientas, control de versiones.</li>
+                                        <li><strong class="text-blue-600">Programación:</strong> Diseño de clases y objetos.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Propuesta individual (ER/Relacional, storyboard, arquitectura, entorno, Git, <strong class="text-blue-700">diseño de clases iniciales</strong>).</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>BBDD: Diseña modelos lógicos/físicos.</small></li>
+                                                <li><small>LM: Diseña interfaces de usuario.</small></li>
+                                                <li><small>SI: Instala y configura sistemas operativos.</small></li>
+                                                <li><small>ED: Utiliza sistemas de control de versiones.</small></li>
+                                                <li><small>PROG: Diseña la estructura de clases y objetos de una aplicación.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="p-3 border border-blue-200 font-semibold">Miércoles</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Act (Consenso y Planificación):</strong>
+                                    <ul>
+                                        <li>Consenso de una propuesta de solución única por equipo.</li>
+                                        <li>Planificación del primer sprint (tareas, responsables, temporalización) usando herramientas ágiles (ej. Trello/Jira).</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">FOL:</strong> Consenso, planificación, organización.</li>
+                                        <li><strong class="text-blue-600">Entornos de Desarrollo:</strong> Gestión de proyectos (Scrum).</li>
+                                        <li><strong class="text-blue-600">Transversal:</strong> Trabajo en equipo, toma de decisiones.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Propuesta de solución consensuada (conjunta), planificación del sprint (TeamGantt/Jira).</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>FOL: Planifica y organiza el trabajo en equipo.</small></li>
+                                                <li><small>ED: Utiliza metodologías ágiles.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-3 border border-blue-200 font-semibold">Jueves</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Act (Implementación de Entorno y BBDD):</strong>
+                                    <ul>
+                                        <li>Implementación de la base de datos en el SGBD elegido (script de creación).</li>
+                                        <li>Configuración de parámetros de acceso al SGBD.</li>
+                                        <li>Auditoría básica del sistema operativo instalado (virtualizado).</li>
+                                        <li>Inicio de la estructura del proyecto en el IDE.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">Bases de Datos:</strong> Creación y configuración de BBDD.</li>
+                                        <li><strong class="text-blue-600">Sistemas Informáticos:</strong> Instalación y auditoría de SO/servicios.</li>
+                                        <li><strong class="text-blue-600">Programación:</strong> Estructura inicial del proyecto.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Base de datos implementada (script), parámetros de acceso, informe de auditoría de SO.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>BBDD: Implementa y configura SGBD.</small></li>
+                                                <li><small>SI: Audita sistemas informáticos.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="p-3 border border-blue-200 font-semibold">Viernes</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Comprobación y Difusión (Diseño):</strong>
+                                    <ul>
+                                        <li>Revisión y validación de los diseños realizados.</li>
+                                        <li>Preparación de la presentación de la fase de análisis y diseño.</li>
+                                        <li>Elaboración del boceto del manual de usuario (página web en inglés).</li>
+                                        <li>Reflexión grupal sobre el proceso y aprendizajes de la fase.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">Inglés Técnico:</strong> Documentación en inglés.</li>
+                                        <li><strong class="text-blue-600">Lenguajes de Marcas:</strong> Diseño web.</li>
+                                        <li><strong class="text-blue-600">Itinerario Empleabilidad:</strong> Habilidades de presentación.</li>
+                                        <li><strong class="text-blue-600">Transversal:</strong> Autoevaluación, coevaluación.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Presentación de la fase de análisis y diseño, boceto manual de usuario (web), diario de sesiones/reflexión.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>Inglés: Elabora documentación técnica en inglés.</small></li>
+                                                <li><small>LM: Maqueta documentos web.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-xl font-semibold mb-4 text-blue-700">Fase 2 (Mayo): Implementación y Pruebas Finales</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto border-collapse">
+                        <thead>
+                            <tr class="bg-blue-200 text-blue-800">
+                                <th class="p-3 border border-blue-300">Día</th>
+                                <th class="p-3 border border-blue-300">Actividades Clave del Equipo</th>
+                                <th class="p-3 border border-blue-300">Módulos / Competencias Implicadas</th>
+                                <th class="p-3 border border-blue-300">Resultados de Aprendizaje (RA) / Criterios de Evaluación (CE) / Entregables</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-blue-50">
+                                <td class="p-3 border border-blue-200 font-semibold">Lunes</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Act (Inicio Implementación):</strong>
+                                    <ul>
+                                        <li>Revisión de la planificación de la Fase 1 y lecciones aprendidas.</li>
+                                        <li>Planificación detallada del sprint de implementación.</li>
+                                        <li>Inicio de la programación de las funcionalidades CRUD completas.</li>
+                                        <li>Implementación del sistema de autenticación/autorización.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">Programación:</strong> Lógica de negocio, autenticación.</li>
+                                        <li><strong class="text-blue-600">Bases de Datos:</strong> Integración de datos.</li>
+                                        <li><strong class="text-blue-600">Entornos de Desarrollo:</strong> Gestión de sprints (Jira).</li>
+                                        <li><strong class="text-blue-600">Transversal:</strong> Adaptabilidad, autocrítica.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Planificación de sprint actualizada, funcionalidades CRUD iniciales, sistema de autenticación.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>PROG: Desarrolla aplicaciones con acceso a datos.</small></li>
+                                                <li><small>BBDD: Gestiona la persistencia de datos.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-3 border border-blue-200 font-semibold">Martes</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Act (Desarrollo Avanzado):</strong>
+                                    <ul>
+                                        <li>Desarrollo de funcionalidades complejas (cálculo de nóminas, generación de remesas SEPA, histórico).</li>
+                                        <li>Refactorización del código para mejorar estructura y rendimiento.</li>
+                                        <li>Implementación de la interfaz gráfica de usuario (GUI) en Java.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">Programación:</strong> Algoritmos complejos, GUI.</li>
+                                        <li><strong class="text-blue-600">Bases de Datos:</strong> Consultas avanzadas, optimización.</li>
+                                        <li><strong class="text-blue-600">Lenguajes de Marcas:</strong> Interfaz gráfica.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Funcionalidades avanzadas implementadas, GUI funcional.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>PROG: Implementa interfaces gráficas.</small></li>
+                                                <li><small>BBDD: Optimiza el acceso a datos.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="p-3 border border-blue-200 font-semibold">Miércoles</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Act (Integración y Multidioma):</strong>
+                                    <ul>
+                                        <li>Integración de todos los componentes de la aplicación (cliente-servidor, BBDD).</li>
+                                        <li>Implementación de la funcionalidad multi-idioma (Castellano/Inglés o Valenciano/Inglés).</li>
+                                        <li>Refinamiento de la usabilidad y experiencia de usuario.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">Programación:</strong> Integración de sistemas.</li>
+                                        <li><strong class="text-blue-600">Lenguajes de Marcas:</strong> Usabilidad, internacionalización.</li>
+                                        <li><strong class="text-blue-600">Inglés Técnico:</strong> Soporte multidioma.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Aplicación integrada, funcionalidad multi-idioma.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>PROG: Integra componentes software.</small></li>
+                                                <li><small>LM: Adapta interfaces a distintos idiomas.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-3 border border-blue-200 font-semibold">Jueves</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Act (Pruebas y Preparación para Despliegue):</strong>
+                                    <ul>
+                                        <li>Realización de pruebas exhaustivas (funcionales, de seguridad, de usabilidad).</li>
+                                        <li>Depuración de errores y optimización del rendimiento.</li>
+                                        <li>Preparación del despliegue simulado (dockerizado, en la nube o en servidor LAN).</li>
+                                        <li>Elaboración del manual de usuario multidioma y la presentación en inglés.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">Entornos de Desarrollo:</strong> Pruebas, depuración, despliegue.</li>
+                                        <li><strong class="text-blue-600">Sistemas Informáticos:</strong> Despliegue de servicios.</li>
+                                        <li><strong class="text-blue-600">Inglés Técnico:</strong> Presentación y manual en inglés.</li>
+                                        <li><strong class="text-blue-600">Transversal:</strong> Resolución de problemas, atención al detalle.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Informe de pruebas, aplicación lista para despliegue, manual de usuario, presentación en inglés.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>ED: Realiza pruebas de software.</small></li>
+                                                <li><small>SI: Despliega aplicaciones en entornos reales.</small></li>
+                                                <li><small>Inglés: Realiza presentaciones técnicas en inglés.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="p-3 border border-blue-200 font-semibold">Viernes</td>
+                                <td class="p-3 border border-blue-200">
+                                    <strong class="text-blue-700">Fase Exposición y Evaluación:</strong>
+                                    <ul>
+                                        <li>Presentación final del prototipo funcional a la comunidad educativa (simulada o real).</li>
+                                        <li>Demostración de las funcionalidades y defensa del proyecto.</li>
+                                        <li>Sesión de autoevaluación y coevaluación grupal e individual.</li>
+                                        <li>Preparación del informe de mejora.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-600">FOL:</strong> Presentación oral, gestión de proyectos, emprendimiento.</li>
+                                        <li><strong class="text-blue-600">Itinerario Empleabilidad:</strong> Habilidades de comunicación, feedback.</li>
+                                        <li><strong class="text-blue-600">Transversal:</strong> Reflexión, autocrítica, trabajo en equipo.</li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border border-blue-200">
+                                    <ul>
+                                        <li><strong class="text-blue-700">Entregables:</strong> Aplicación funcional, presentación final, informe de mejora, rúbricas de evaluación completadas.</li>
+                                        <li><strong class="text-blue-700">RA/CEs:</strong>
+                                            <ul>
+                                                <li><small>FOL: Evalúa la viabilidad de proyectos.</small></li>
+                                                <li><small>Itinerario: Gestiona el feedback y la mejora continua.</small></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluacion" class="mb-12 scroll-mt-20">
+            <h2 class="section-title text-center">7. Evaluación en el ABR: Formativa y Competencial</h2>
+            <div class="card max-w-3xl mx-auto">
+                <p class="text-lg mb-6 text-gray-700">
+                    La evaluación se centra tanto en el <span class="font-semibold text-blue-700">producto final</span> como en el <span class="font-semibold text-blue-700">proceso de aprendizaje</span> y el desarrollo de competencias. Es continua, formativa y considera el error como oportunidad de aprendizaje.
+                </p>
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">Instrumentos Clave:</h3>
+                <ul class="list-none space-y-3">
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">📋</span> <div><span class="font-semibold">Rúbricas de Evaluación:</span> Para competencias específicas y transversales.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">📓</span> <div><span class="font-semibold">Diarios de Aprendizaje/Portafolios:</span> Documentación del proceso y reflexiones.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🔄</span> <div><span class="font-semibold">Coevaluación y Autoevaluación:</span> Fomentando responsabilidad y pensamiento crítico.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">👀</span> <div><span class="font-semibold">Observación Directa del Docente:</span> Seguimiento de participación y colaboración.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🎤</span> <div><span class="font-semibold">Presentaciones Orales y Demos:</span> Habilidades de comunicación y argumentación.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">📝</span> <div><span class="font-semibold">Memoria Técnica y de Usuario:</span> Documentación del proyecto.</div></li>
+                </ul>
+                <p class="mt-6 text-gray-700">
+                    Se implementarán mecanismos de <span class="font-semibold text-blue-700">feedback constante</span> y sesiones de reflexión para la mejora continua.
+                </p>
+            </div>
+        </section>
+
+        <section id="impacto" class="scroll-mt-20">
+            <h2 class="section-title text-center">8. Impacto Esperado y Recomendaciones</h2>
+            <div class="card max-w-4xl mx-auto">
+                <p class="text-lg mb-6 text-gray-700">
+                    La implementación del ABR en el Proyecto Intermodular busca transformar la experiencia educativa, dotando al alumnado de DAM y DAW de las <span class="font-semibold text-blue-700">competencias técnicas y transversales</span> demandadas por el mercado laboral y el modelo de FP Dual.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center mb-8">
+                    <div class="bg-blue-100 p-6 rounded-lg">
+                        <div class="kpi-value">💼</div>
+                        <p class="font-semibold text-blue-700 mt-2 text-lg">Mejor Preparación Profesional</p>
+                        <p class="kpi-label">Desarrollo de habilidades prácticas y adaptabilidad.</p>
+                    </div>
+                    <div class="bg-blue-100 p-6 rounded-lg">
+                        <div class="kpi-value">💡</div>
+                        <p class="font-semibold text-blue-700 mt-2 text-lg">Aprendizaje Significativo</p>
+                        <p class="kpi-label">Conexión directa con problemas y soluciones reales.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">Recomendaciones Clave para el Éxito:</h3>
+                <ul class="list-none space-y-3">
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">👨‍🏫</span> <div><span class="font-semibold">Formación Docente Continua:</span> En ABR y metodologías activas.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🔗</span> <div><span class="font-semibold">Colaboración Interdepartamental:</span> Coordinación curricular fluida.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">💻</span> <div><span class="font-semibold">Recursos y Espacios Flexibles:</span> Tecnologías actualizadas y entornos colaborativos.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🏢</span> <div><span class="font-semibold">Implicación del Entorno Productivo:</span> Retos auténticos y mentoría empresarial.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">🔄</span> <div><span class="font-semibold">Flexibilidad y Adaptación:</span> Ajustar retos a las necesidades del alumnado.</div></li>
+                    <li class="flex items-start"><span class="text-blue-600 mr-2 text-xl">📚</span> <div><span class="font-semibold">Documentación y Difusión:</span> Compartir buenas prácticas.</div></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center p-6 mt-12 bg-blue-700 text-blue-100 text-sm">
+        <p>&copy; 2025 Propuesta de Innovación en FP. Basado en el informe de ABR para DAM/DAW.</p>
+        <p>Infografía generada con fines demostrativos.</p>
+        <p>IES CAMP DE MORVEDRE.</p>
+    </footer>
+
+    <script>
+        function wrapText(text, maxWidthChars) {
+            const words = text.split(' ');
+            let lines = [];
+            let currentLine = words[0] || '';
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidthChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: { size: 10 }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+        
+        const reto1Data = {
+            labels: [wrapText('Análisis Requisitos',16), wrapText('Diseño BBDD',16), wrapText('Diseño UI/UX',16), wrapText('Arquitectura & Planif.',16)],
+            datasets: [{
+                label: 'Esfuerzo Estimado Fase 1',
+                data: [30, 25, 25, 20],
+                backgroundColor: ['#60a5fa', '#3b82f6', '#2563eb', '#1d4ed8'],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        const reto2Data = {
+            labels: [wrapText('Programación',16), wrapText('BBDD & Seguridad',16), wrapText('UI/UX Avanzada',16), wrapText('Pruebas & Despliegue',16)],
+            datasets: [{
+                label: 'Esfuerzo Estimado Fase 2',
+                data: [40, 20, 25, 15],
+                backgroundColor: ['#60a5fa', '#3b82f6', '#2563eb', '#1d4ed8'],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        window.onload = function() {
+            const ctxReto1 = document.getElementById('reto1Chart');
+            if (ctxReto1) {
+                new Chart(ctxReto1, {
+                    type: 'doughnut',
+                    data: reto1Data,
+                    options: commonChartOptions
+                });
+            }
+
+            const ctxReto2 = document.getElementById('reto2Chart');
+            if (ctxReto2) {
+                new Chart(ctxReto2, {
+                    type: 'doughnut',
+                    data: reto2Data,
+                    options: commonChartOptions
+                });
+            }
+        };
+    </script>
+</body>
+</html>
