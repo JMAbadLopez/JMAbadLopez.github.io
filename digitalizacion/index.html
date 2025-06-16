@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Módulo de Digitalización (SMR 2025-2026)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- 
+    Palette Choice: "Energetic & Playful"
+    - Primary Blue: #00A6FB
+    - Darker Blue: #0582CA
+    - Darkest Blue: #006494
+    - Accent Yellow: #F7B32B
+    - Accent Orange: #FC643B
+    
+    Confirmation: NO SVG graphics were used. NO Mermaid JS was used. All diagrams and charts are rendered using HTML/CSS/Tailwind or the Canvas API via Chart.js.
+    
+    Narrative Plan:
+    1.  Hero: Introduce the module with key stats.
+    2.  Timeline: Show the learning journey across trimesters.
+    3.  Core Content: Detail each Learning Outcome (RA) in cards.
+    4.  Methodology: Explain the teaching approach with icons.
+    5.  Evaluation: Visualize grade breakdown with a donut chart.
+    6.  Final Project: Illustrate the RA5 flowchart using HTML/CSS.
+    7.  Footer: Conclude with course context.
+
+    Visualization Choices:
+    - Key Stats (105h, 2º Curso) -> Goal: Inform -> Chosen: Single Big Number -> Justification: High impact for key data. Method: HTML/Tailwind. NO SVG.
+    - Trimester Sequence -> Goal: Change/Organize -> Chosen: Timeline -> Justification: Clearly shows progression over time. Method: HTML/Tailwind. NO SVG.
+    - Evaluation Breakdown -> Goal: Compare/Inform -> Chosen: Donut Chart -> Justification: Perfect for showing composition of a whole (100% of the grade). Library: Chart.js (Canvas). NO SVG.
+    - Methodologies -> Goal: Organize -> Chosen: Pictograph/Icon List -> Justification: Visually engaging way to list items. Method: Unicode characters & HTML/Tailwind. NO SVG.
+    - RA5 Process -> Goal: Organize -> Chosen: Flow Chart -> Justification: Best way to show a multi-step process. Method: Structured HTML/CSS with Tailwind. NO SVG.
+    -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-line {
+            width: 2px;
+            background-color: #0582CA;
+        }
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; 
+            height: 0; 
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #0582CA;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #00A6FB, #0582CA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-black mb-2 gradient-text">Módulo de Digitalización</h1>
+            <p class="text-lg md:text-xl text-gray-600 font-semibold">Técnico en Sistemas Microinformáticos y Redes</p>
+            <div class="mt-8 flex justify-center items-center space-x-8">
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-[#0582CA]">2º</p>
+                    <p class="text-sm text-gray-500">Curso</p>
+                </div>
+                <div class="w-px h-12 bg-gray-300"></div>
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-[#0582CA]">105</p>
+                    <p class="text-sm text-gray-500">Horas</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-2">El Viaje del Aprendizaje</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">El módulo se estructura a lo largo del curso, cubriendo desde los fundamentos de la economía digital hasta la creación de un plan de transformación completo, asegurando un aprendizaje progresivo y coherente.</p>
+            </div>
+            <div class="relative w-full">
+                <div class="absolute top-1/2 left-0 w-full h-1 bg-[#00A6FB] opacity-30 -translate-y-1/2"></div>
+                <div class="relative flex justify-between items-start">
+                    <div class="text-center w-1/3">
+                        <div class="relative mb-2">
+                           <div class="mx-auto w-6 h-6 rounded-full bg-[#00A6FB] border-4 border-white shadow-lg"></div>
+                        </div>
+                        <h3 class="font-bold text-lg text-[#006494]">1er Trimestre</h3>
+                        <div class="bg-white rounded-lg shadow-md p-3 mt-2 text-sm text-left">
+                           <p><strong>UD 1:</strong> Economía Sostenible (20h)</p>
+                           <p><strong>UD 2:</strong> La Industria 4.0 (25h)</p>
+                        </div>
+                    </div>
+                    <div class="text-center w-1/3">
+                        <div class="relative mb-2">
+                           <div class="mx-auto w-6 h-6 rounded-full bg-[#00A6FB] border-4 border-white shadow-lg"></div>
+                        </div>
+                        <h3 class="font-bold text-lg text-[#006494]">2º Trimestre</h3>
+                         <div class="bg-white rounded-lg shadow-md p-3 mt-2 text-sm text-left">
+                           <p><strong>UD 3:</strong> El Poder de la Nube (25h)</p>
+                           <p><strong>UD 4:</strong> Tecnologías Habilitadoras (25h)</p>
+                        </div>
+                    </div>
+                    <div class="text-center w-1/3">
+                        <div class="relative mb-2">
+                           <div class="mx-auto w-6 h-6 rounded-full bg-[#F7B32B] border-4 border-white shadow-lg"></div>
+                        </div>
+                        <h3 class="font-bold text-lg text-[#006494]">3er Trimestre</h3>
+                         <div class="bg-white rounded-lg shadow-md p-3 mt-2 text-sm text-left">
+                           <p><strong>UD 5:</strong> Proyecto Final (10h)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-20">
+             <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-2">¿Qué Aprenderás?</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">Cada Unidad Didáctica se centra en un Resultado de Aprendizaje clave, dotándote de las competencias necesarias para entender y aplicar la digitalización en el mundo real.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 1: Economía Lineal vs. Circular</h3>
+                    <p class="text-sm text-gray-600 mb-4">Diferenciar modelos económicos y comprender el impacto de la sostenibilidad y los ODS.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 2: La 4ª Revolución Industrial</h3>
+                    <p class="text-sm text-gray-600 mb-4">Caracterizar la Industria 4.0, los sistemas ciberfísicos y las ventajas de la migración digital.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 3: Cloud, Edge & Fog</h3>
+                    <p class="text-sm text-gray-600 mb-4">Identificar la estructura de sistemas en la nube y su aplicación en entornos conectados.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 4: Tecnologías Habilitadoras</h3>
+                    <p class="text-sm text-gray-600 mb-4">Comparar sistemas clásicos y digitalizados, describiendo tecnologías como IA, IoT, Big Data y Blockchain.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-1 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 5: Plan de Transformación Digital</h3>
+                    <p class="text-sm text-gray-600 mb-4">Elaborar un plan práctico para digitalizar una empresa, analizando su viabilidad y mejoras.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+            <div>
+                 <div class="text-center md:text-left mb-10">
+                    <h2 class="text-3xl font-bold mb-2">¿Cómo Aprenderás?</h2>
+                    <p class="text-gray-600">Utilizamos una metodología activa y centrada en ti, combinando teoría y práctica para un aprendizaje efectivo y motivador.</p>
+                </div>
+                <ul class="space-y-6">
+                    <li class="flex items-start">
+                        <span class="text-3xl mr-4 text-[#00A6FB]">🏗️</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Aprendizaje Basado en Proyectos</h4>
+                            <p class="text-gray-600">Aplicarás todo lo aprendido en un proyecto final real y práctico.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-3xl mr-4 text-[#00A6FB]">👨‍🏫</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Clases Invertidas</h4>
+                            <p class="text-gray-600">Revisarás la teoría en casa para dedicar el tiempo de clase a lo que más importa: la práctica.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                         <span class="text-3xl mr-4 text-[#00A6FB]">🤝</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Aprendizaje Colaborativo</h4>
+                            <p class="text-gray-600">Trabajarás en equipo para resolver retos, fomentando la comunicación y el apoyo mutuo.</p>
+                        </div>
+                    </li>
+                     <li class="flex items-start">
+                        <span class="text-3xl mr-4 text-[#00A6FB]">🎮</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Gamificación</h4>
+                            <p class="text-gray-600">Usaremos juegos y competiciones para repasar conceptos de forma divertida.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-xl p-6">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold mb-2">¿Cómo se te Evaluará?</h2>
+                     <p class="text-gray-600">La evaluación es continua y se basa en tu progreso. La nota final se compone de varias partes para valorar todas tus competencias.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="evaluationChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section>
+             <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-2">Proyecto Final: Hoja de Ruta de la Digitalización</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">La UD 5 te guiará para crear un plan de transformación digital. Este es el proceso que seguirás para analizar una empresa y proponer una solución tecnológica viable y efectiva.</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="bg-white p-4 rounded-lg shadow-lg text-center w-full max-w-sm">
+                    <h3 class="font-bold text-[#006494]">1. Análisis de la Empresa Clásica</h3>
+                    <p class="text-sm text-gray-600">Definir el diagrama de funcionamiento actual.</p>
+                </div>
+                
+                <div class="h-12 w-px bg-[#0582CA] relative flow-arrow"></div>
+
+                <div class="bg-white p-4 rounded-lg shadow-lg text-center w-full max-w-sm">
+                    <h3 class="font-bold text-[#006494]">2. Identificación de Oportunidades</h3>
+                    <p class="text-sm text-gray-600">Localizar etapas susceptibles de ser digitalizadas.</p>
+                </div>
+
+                <div class="h-12 w-px bg-[#0582CA] relative flow-arrow"></div>
+
+                <div class="bg-white p-4 rounded-lg shadow-lg text-center w-full max-w-sm">
+                    <h3 class="font-bold text-[#006494]">3. Selección de Tecnologías (THD)</h3>
+                    <p class="text-sm text-gray-600">Elegir las herramientas adecuadas para cada etapa (IA, IoT, Cloud...).</p>
+                </div>
+                
+                <div class="h-12 w-px bg-[#0582CA] relative flow-arrow"></div>
+
+                <div class="bg-white p-4 rounded-lg shadow-lg text-center w-full max-w-sm">
+                    <h3 class="font-bold text-[#FC643B]">4. Elaboración del Plan</h3>
+                    <p class="text-sm text-gray-600">Crear diagramas, informes de viabilidad y secuencia de transformación.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center p-6 bg-gray-800 text-white mt-16">
+        <p>Programación Didáctica para el Módulo de Digitalización | Curso 2025-2026</p>
+        <p class="text-sm text-gray-400">Basado en el currículo de la Comunidad Valenciana</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('evaluationChart').getContext('2d');
+            
+            const evaluationData = {
+                labels: [
+                    'Actividades Prácticas', 
+                    'Pruebas Escritas', 
+                    'Proyecto Final', 
+                    'Participación y Actitud'
+                ],
+                datasets: [{
+                    label: 'Ponderación de la Nota Final',
+                    data: [40, 30, 20, 10],
+                    backgroundColor: [
+                        '#00A6FB', 
+                        '#0582CA', 
+                        '#FC643B', 
+                        '#F7B32B'
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                    hoverOffset: 16
+                }]
+            };
+
+            const evaluationOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14,
+                                family: 'Inter, sans-serif'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                             label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        },
+                        backgroundColor: '#333',
+                        titleFont: {
+                             family: 'Inter, sans-serif'
+                        },
+                        bodyFont: {
+                             family: 'Inter, sans-serif'
+                        },
+                        padding: 10,
+                        cornerRadius: 5
+                    }
+                }
+            };
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: evaluationData,
+                options: evaluationOptions
+            });
+        });
+    </script>
+
+</body>
+</html>
