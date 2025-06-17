@@ -23,7 +23,7 @@
     Narrative Plan:
     1.  Hero: Introduce the module with key stats.
     2.  Timeline: Show the learning journey across trimesters.
-    3.  Core Content: Detail each Learning Outcome (RA) in cards.
+    3.  Core Content: Detail each Learning Outcome (RA) and its associated Evaluation Criteria (CE) in interactive cards.
     4.  Methodology: Explain the teaching approach with icons.
     5.  Evaluation: Visualize grade breakdown with a donut chart.
     6.  Final Project: Illustrate the RA5 flowchart using HTML/CSS.
@@ -56,10 +56,6 @@
                 height: 400px;
             }
         }
-        .flow-line {
-            width: 2px;
-            background-color: #0582CA;
-        }
         .flow-arrow::after {
             content: '';
             position: absolute;
@@ -77,6 +73,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-header.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -84,7 +88,7 @@
     <div class="container mx-auto p-4 md:p-8">
 
         <header class="text-center mb-16">
-            <h1 class="text-4xl md:text-6xl font-black mb-2 gradient-text">Módulo de Digitalización</h1>
+            <h1 class="text-4xl md:text-6xl font-black mb-2 gradient-text">Propuesta de Programación: Módulo de Digitalización</h1>
             <p class="text-lg md:text-xl text-gray-600 font-semibold">Técnico en Sistemas Microinformáticos y Redes</p>
             <div class="mt-8 flex justify-center items-center space-x-8">
                 <div class="text-center">
@@ -101,8 +105,8 @@
 
         <section class="mb-20">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold mb-2">El Viaje del Aprendizaje</h2>
-                <p class="max-w-3xl mx-auto text-gray-600">El módulo se estructura a lo largo del curso, cubriendo desde los fundamentos de la economía digital hasta la creación de un plan de transformación completo, asegurando un aprendizaje progresivo y coherente.</p>
+                <h2 class="text-3xl font-bold mb-2">Secuenciación y Temporalización Propuesta</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">Se propone una distribución de las Unidades Didácticas (UD) en dos trimestres para facilitar un aprendizaje progresivo, culminando con un proyecto que integra todas las competencias adquiridas.</p>
             </div>
             <div class="relative w-full max-w-4xl mx-auto">
                 <div class="absolute top-1/2 left-0 w-full h-1 bg-[#00A6FB] opacity-30 -translate-y-1/2"></div>
@@ -115,6 +119,7 @@
                         <div class="bg-white rounded-lg shadow-md p-3 mt-2 text-sm text-left">
                            <p><strong>UD 1:</strong> Economía Sostenible (4h)</p>
                            <p><strong>UD 2:</strong> La Industria 4.0 (5h)</p>
+                           <p><strong>UD 3:</strong> El Poder de la Nube (5h)</p>
                         </div>
                     </div>
                     <div class="text-center w-1/2 pl-8">
@@ -123,7 +128,6 @@
                         </div>
                         <h3 class="font-bold text-lg text-[#006494]">2º Trimestre</h3>
                          <div class="bg-white rounded-lg shadow-md p-3 mt-2 text-sm text-left">
-                           <p><strong>UD 3:</strong> El Poder de la Nube (5h)</p>
                            <p><strong>UD 4:</strong> Tecnologías Habilitadoras (4h)</p>
                            <p><strong>UD 5:</strong> Proyecto Final (12h)</p>
                         </div>
@@ -134,57 +138,141 @@
         
         <section class="mb-20">
              <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold mb-2">¿Qué Aprenderás?</h2>
-                <p class="max-w-3xl mx-auto text-gray-600">Cada Unidad Didáctica se centra en un Resultado de Aprendizaje clave, dotándote de las competencias necesarias para entender y aplicar la digitalización en el mundo real.</p>
+                <h2 class="text-3xl font-bold mb-2">Resultados de Aprendizaje y Criterios de Evaluación</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">A continuación se detallan los RAs y sus CEs asociados para cada unidad. Haga clic en cada una para expandir y ver los detalles.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="space-y-4">
                 
-                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
-                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 1: Economía Lineal vs. Circular</h3>
-                    <p class="text-sm text-gray-600 mb-4">Diferenciar modelos económicos y comprender el impacto de la sostenibilidad y los ODS.</p>
+                <!-- UD 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-[#006494]">UD 1 / RA 1: Economía Lineal vs. Circular</h3>
+                        <span class="accordion-arrow text-2xl text-[#00A6FB] transition-transform duration-300">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0">
+                            <p class="font-semibold mb-2">Establece las diferencias entre la Economía Lineal (EL) y la Economía Circular (EC), identificando sus ventajas en relación con el medioambiente y el desarrollo sostenible.</p>
+                            <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>a) Se han identificado las etapas «típicas» de los modelos basados en EL y modelos basados en EC.</li>
+                                <li>b) Se ha analizado cada etapa de los modelos EL y EC y su repercusión en el medio ambiente.</li>
+                                <li>c) Se ha valorado la importancia del reciclaje en los modelos económicos.</li>
+                                <li>d) Se han identificado procesos reales basados en EL.</li>
+                                <li>e) Se han identificado procesos reales basados en EC.</li>
+                                <li>f) Se han comparado los modelos anteriores en relación con su impacto medioambiental y los ODS.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
-                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 2: La 4ª Revolución Industrial</h3>
-                    <p class="text-sm text-gray-600 mb-4">Caracterizar la Industria 4.0, los sistemas ciberfísicos y las ventajas de la migración digital.</p>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
-                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 3: Cloud, Edge & Fog</h3>
-                    <p class="text-sm text-gray-600 mb-4">Identificar la estructura de sistemas en la nube y su aplicación en entornos conectados.</p>
+                <!-- UD 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-[#006494]">UD 2 / RA 2: La 4ª Revolución Industrial</h3>
+                        <span class="accordion-arrow text-2xl text-[#00A6FB] transition-transform duration-300">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0">
+                            <p class="font-semibold mb-2">Caracteriza los principales aspectos de la 4.ª Revolución Industrial, indicando los cambios y ventajas para clientes y empresas.</p>
+                            <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>a) Se han relacionado los sistemas ciberfísicos con la evolución industrial.</li>
+                                <li>b) Se ha analizado el cambio producido en los sistemas automatizados.</li>
+                                <li>c) Se ha descrito la combinación de la parte física de las industrias con el software, IoT, etc.</li>
+                                <li>d) Se ha descrito la interrelación entre el mundo físico y el virtual.</li>
+                                <li>e) Se ha relacionado la migración a entornos 4.0 con la mejora de los resultados.</li>
+                                <li>f) Se han identificado las ventajas para clientes y empresas.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform duration-300">
-                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 4: Tecnologías Habilitadoras</h3>
-                    <p class="text-sm text-gray-600 mb-4">Comparar sistemas clásicos y digitalizados, describiendo tecnologías como IA, IoT, Big Data y Blockchain.</p>
+                <!-- UD 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-[#006494]">UD 3 / RA 3: Cloud, Edge & Fog</h3>
+                        <span class="accordion-arrow text-2xl text-[#00A6FB] transition-transform duration-300">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0">
+                             <p class="font-semibold mb-2">Identifica la estructura de los sistemas basados en cloud/nube, describiendo su tipología y campo de aplicación.</p>
+                            <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>a) Se han identificado los diferentes niveles de la cloud/nube.</li>
+                                <li>b) Se han identificado las principales funciones de la cloud/nube.</li>
+                                <li>c) Se ha descrito el concepto de edge computing y su relación con la cloud/nube.</li>
+                                <li>d) Se han definido los conceptos de fog y mist y sus zonas de aplicación.</li>
+                                <li>e) Se han identificado las ventajas de la cloud/nube en los sistemas conectados.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-1 transform hover:scale-105 transition-transform duration-300">
-                    <h3 class="text-xl font-bold mb-3 text-[#006494]">UD 5: Plan de Transformación Digital</h3>
-                    <p class="text-sm text-gray-600 mb-4">Elaborar un plan práctico para digitalizar una empresa, analizando su viabilidad y mejoras.</p>
+                <!-- UD 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-[#006494]">UD 4 / RA 4: Tecnologías Habilitadoras</h3>
+                        <span class="accordion-arrow text-2xl text-[#00A6FB] transition-transform duration-300">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0">
+                             <p class="font-semibold mb-2">Compara los sistemas de producción/prestación de servicios digitalizados con los sistemas clásicos, identificando las mejoras introducidas.</p>
+                            <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                               <li>a) Se han identificado las tecnologías habilitadoras (THD) actuales.</li>
+                               <li>b) Se han descrito las características y aplicaciones del IoT, IA, Big Data, 5G, robótica, Blockchain, etc.</li>
+                               <li>c) Se ha descrito la contribución de las THD a la mejora de la productividad.</li>
+                               <li>d) Se ha relacionado la alineación entre las unidades funcionales y el objetivo.</li>
+                               <li>e) Se ha relacionado la implantación de las THD con la reducción de costes.</li>
+                               <li>f) Se han relacionado las tecnologías disruptivas con aplicaciones concretas.</li>
+                               <li>g) Se han definido los sistemas de almacenamiento de datos no convencionales.</li>
+                               <li>h) Se han descrito las mejoras producidas en el sistema y en cada una de sus etapas.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
+                 <!-- UD 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-[#006494]">UD 5 / RA 5: Plan de Transformación Digital</h3>
+                        <span class="accordion-arrow text-2xl text-[#00A6FB] transition-transform duration-300">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0">
+                             <p class="font-semibold mb-2">Elabora un plan de transformación de una empresa clásica al concepto 4.0, determinando los cambios a introducir y su impacto en los recursos humanos.</p>
+                            <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                               <li>a) Se ha definido a nivel de bloques el diagrama de funcionamiento de la empresa clásica.</li>
+                               <li>b) Se han identificado las etapas susceptibles de ser digitalizadas.</li>
+                               <li>c) Se han definido las tecnologías implicadas en cada una de las etapas.</li>
+                               <li>d) Se ha establecido la conexión de las etapas digitalizadas con el resto del sistema.</li>
+                               <li>e) Se ha elaborado un diagrama de bloques del sistema digitalizado.</li>
+                               <li>f) Se ha elaborado un informe de viabilidad y de las mejoras introducidas.</li>
+                               <li>g) Se ha analizado la mejora en la producción y gestión de residuos.</li>
+                               <li>h) Se ha elaborado un documento con la secuencia del plan de transformación.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
             <div class="flex flex-col justify-center h-full">
                  <div class="text-center md:text-left mb-10">
-                    <h2 class="text-3xl font-bold mb-2">¿Cómo Aprenderás?</h2>
-                    <p class="text-gray-600">Utilizamos una metodología activa y centrada en ti, combinando teoría y práctica para un aprendizaje efectivo y motivador.</p>
+                    <h2 class="text-3xl font-bold mb-2">Enfoque Metodológico Propuesto</h2>
+                    <p class="text-gray-600">La metodología propuesta busca ser activa y centrada en el estudiante, promoviendo la aplicación práctica de los conocimientos.</p>
                 </div>
                 <ul class="space-y-6">
                     <li class="flex items-start">
                         <span class="text-3xl mr-4 text-[#00A6FB]">🏗️</span>
                         <div>
                             <h4 class="font-bold text-lg">Aprendizaje Basado en Proyectos</h4>
-                            <p class="text-gray-600">Aplicarás todo lo aprendido en un proyecto final real y práctico.</p>
+                            <p class="text-gray-600">El módulo culmina con un proyecto que sirve como eje vertebrador para la aplicación de todas las competencias.</p>
                         </div>
                     </li>
                     <li class="flex items-start">
                          <span class="text-3xl mr-4 text-[#00A6FB]">🤝</span>
                         <div>
                             <h4 class="font-bold text-lg">Aprendizaje Colaborativo</h4>
-                            <p class="text-gray-600">Trabajarás en equipo para resolver retos, fomentando la comunicación y el apoyo mutuo.</p>
+                            <p class="text-gray-600">Se fomentará el trabajo en equipo para la resolución de casos prácticos y para el desarrollo del proyecto final.</p>
                         </div>
                     </li>
                 </ul>
@@ -192,8 +280,8 @@
             
             <div class="bg-white rounded-lg shadow-xl p-6">
                 <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold mb-2">¿Cómo se te Evaluará?</h2>
-                     <p class="text-gray-600">La evaluación es continua y se basa en tu progreso. La nota final se compone de varias partes para valorar todas tus competencias.</p>
+                    <h2 class="text-3xl font-bold mb-2">Propuesta de Instrumentos de Evaluación</h2>
+                     <p class="text-gray-600">Se propone una evaluación continua y formativa, ponderando diferentes instrumentos para una valoración integral del aprendizaje del alumnado.</p>
                 </div>
                 <div class="chart-container">
                     <canvas id="evaluationChart"></canvas>
@@ -203,8 +291,8 @@
 
         <section>
              <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold mb-2">Proyecto Final: Hoja de Ruta de la Digitalización</h2>
-                <p class="max-w-3xl mx-auto text-gray-600">La UD 5 te guiará para crear un plan de transformación digital. Este es el proceso que seguirás para analizar una empresa y proponer una solución tecnológica viable y efectiva.</p>
+                <h2 class="text-3xl font-bold mb-2">Esquema del Proyecto Final (RA 5)</h2>
+                <p class="max-w-3xl mx-auto text-gray-600">El proyecto final (UD 5) sigue una hoja de ruta estructurada para guiar al alumnado en la elaboración de un plan de transformación digital completo.</p>
             </div>
             <div class="flex flex-col items-center">
                 <div class="bg-white p-4 rounded-lg shadow-lg text-center w-full max-w-sm">
@@ -320,6 +408,19 @@
                 type: 'doughnut',
                 data: evaluationData,
                 options: evaluationOptions
+            });
+
+            const accordions = document.querySelectorAll('.accordion-header');
+            accordions.forEach(accordion => {
+                accordion.addEventListener('click', () => {
+                    accordion.classList.toggle('active');
+                    const content = accordion.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
             });
         });
     </script>
