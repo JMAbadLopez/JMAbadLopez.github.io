@@ -21,8 +21,8 @@
     Confirmation: NO SVG graphics were used. NO Mermaid JS was used. All diagrams and charts are rendered using HTML/CSS/Tailwind or the Canvas API via Chart.js.
     
     Narrative Plan:
-    1.  Hero: Introduce the module with key stats.
-    2.  Timeline: Show the learning journey across trimesters.
+    1.  Hero: Introduce the module with key stats, including school/workplace split.
+    2.  Timeline: Show the learning journey across trimesters reflecting the 21h at the school.
     3.  Core Content: Detail each Learning Outcome (RA) and its associated Evaluation Criteria (CE) in interactive cards.
     4.  Methodology: Explain the teaching approach with icons.
     5.  Evaluation: Visualize grade breakdown with a donut chart.
@@ -30,7 +30,7 @@
     7.  Footer: Conclude with course context.
 
     Visualization Choices:
-    - Key Stats (30h, 2º Curso) -> Goal: Inform -> Chosen: Single Big Number -> Justification: High impact for key data. Method: HTML/Tailwind. NO SVG.
+    - Key Stats (32h, 21h+11h) -> Goal: Inform -> Chosen: Single Big Number & Pictograph -> Justification: High impact for key data. Method: HTML/Tailwind. NO SVG.
     - Trimester Sequence -> Goal: Change/Organize -> Chosen: Timeline -> Justification: Clearly shows progression over time. Method: HTML/Tailwind. NO SVG.
     - Evaluation Breakdown -> Goal: Compare/Inform -> Chosen: Donut Chart -> Justification: Perfect for showing composition of a whole (100% of the grade). Library: Chart.js (Canvas). NO SVG.
     - Methodologies -> Goal: Organize -> Chosen: Pictograph/Icon List -> Justification: Visually engaging way to list items. Method: Unicode characters & HTML/Tailwind. NO SVG.
@@ -88,17 +88,32 @@
     <div class="container mx-auto p-4 md:p-8">
 
         <header class="text-center mb-16">
-            <h1 class="text-4xl md:text-6xl font-black mb-2">Módulo de Digitalización</h1>
+            <h1 class="text-4xl md:text-6xl font-black mb-2">Propuesta de Programación: Módulo de Digitalización</h1>
             <p class="text-lg md:text-xl text-gray-600 font-semibold">Técnico en Sistemas Microinformáticos y Redes</p>
-            <div class="mt-8 flex justify-center items-center space-x-8">
+            <div class="mt-8 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
                 <div class="text-center">
                     <p class="text-4xl font-bold text-[#0582CA]">2º</p>
                     <p class="text-sm text-gray-500">Curso</p>
                 </div>
-                <div class="w-px h-12 bg-gray-300"></div>
-                <div class="text-center">
-                    <p class="text-4xl font-bold text-[#0582CA]">30</p>
-                    <p class="text-sm text-gray-500">Horas</p>
+                <div class="w-px h-12 bg-gray-300 hidden md:block"></div>
+                 <div class="text-center">
+                    <p class="text-4xl font-bold text-[#0582CA]">32</p>
+                    <p class="text-sm text-gray-500">Horas Totales</p>
+                </div>
+                <div class="w-px h-12 bg-gray-300 hidden md:block"></div>
+                <div class="text-center p-4 bg-white rounded-lg shadow">
+                    <p class="font-bold text-lg text-[#006494]">Distribución</p>
+                    <div class="flex justify-center items-center space-x-4 mt-2">
+                        <div class="text-center">
+                             <p class="text-2xl font-bold text-[#00A6FB]">21h</p>
+                             <p class="text-xs text-gray-500">🏢 Centro Estudios</p>
+                        </div>
+                        <p class="text-2xl font-bold text-gray-400">+</p>
+                        <div class="text-center">
+                             <p class="text-2xl font-bold text-[#F7B32B]">11h</p>
+                             <p class="text-xs text-gray-500">🏭 Centro Trabajo</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -106,7 +121,7 @@
         <section class="mb-20">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold mb-2">Secuenciación y Temporalización Propuesta</h2>
-                <p class="max-w-3xl mx-auto text-gray-600">Se propone una distribución de las Unidades Didácticas (UD) en dos trimestres para facilitar un aprendizaje progresivo, culminando con un proyecto que integra todas las competencias adquiridas.</p>
+                <p class="max-w-3xl mx-auto text-gray-600">Se propone una distribución de las Unidades Didácticas (UD) en dos trimestres, culminando con un proyecto que integra las competencias. Las 11h en empresa se realizarán de forma transversal.</p>
             </div>
             <div class="relative w-full max-w-4xl mx-auto">
                 <div class="absolute top-1/2 left-0 w-full h-1 bg-[#00A6FB] opacity-30 -translate-y-1/2"></div>
@@ -117,9 +132,9 @@
                         </div>
                         <h3 class="font-bold text-lg text-[#006494]">1er Trimestre</h3>
                         <div class="bg-white rounded-lg shadow-md p-3 mt-2 text-sm text-left">
-                           <p><strong>UD 1:</strong> Economía Sostenible (4h)</p>
-                           <p><strong>UD 2:</strong> La Industria 4.0 (5h)</p>
-                           <p><strong>UD 3:</strong> El Poder de la Nube (5h)</p>
+                           <p><strong>UD 1:</strong> Economía Sostenible (3h)</p>
+                           <p><strong>UD 2:</strong> La Industria 4.0 (3h)</p>
+                           <p><strong>UD 3:</strong> El Poder de la Nube (3h)</p>
                         </div>
                     </div>
                     <div class="text-center w-1/2 pl-8">
@@ -128,8 +143,8 @@
                         </div>
                         <h3 class="font-bold text-lg text-[#006494]">2º Trimestre</h3>
                          <div class="bg-white rounded-lg shadow-md p-3 mt-2 text-sm text-left">
-                           <p><strong>UD 4:</strong> Tecnologías Habilitadoras (4h)</p>
-                           <p><strong>UD 5:</strong> Proyecto Final (12h)</p>
+                           <p><strong>UD 4:</strong> Tecnologías Habilitadoras (3h)</p>
+                           <p><strong>UD 5:</strong> Proyecto Final (9h)</p>
                         </div>
                     </div>
                 </div>
