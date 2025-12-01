@@ -1,0 +1,96 @@
+site_name: JABAD
+site_url: https://jmabadlopez.github.io/site
+site_author: José Abad
+site_description: Apuntes y recursos de educación
+
+# Repositorio (opcional: activa botón de 'Editar en GitHub')
+repo_name: JMAbadLopez/JMAbadLopez.github.io
+repo_url: https://github.com/JMAbadLopez/JMAbadLopez.github.io
+
+# Configuración del Tema Material
+theme:
+  name: material
+  language: es
+  
+  # Paleta de colores (Cambio automático Claro/Oscuro según sistema)
+  palette:
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+
+  # Tipografías: Roboto para texto, JetBrains Mono para código
+  font:
+    text: Roboto
+    code: JetBrains Mono
+
+  # Características de la Interfaz (UX)
+  features:
+    - navigation.instant        # Carga instantánea (SPA)
+    - navigation.tracking       # La URL cambia al hacer scroll
+    - navigation.top            # Botón "Volver arriba"
+    - navigation.expand         # Menú lateral expandido por defecto
+    - search.suggest            # Sugerencias mientras escribes
+    - search.highlight          # Resalta lo buscado
+    - content.code.copy         # ✨ Botón de copiar código
+    # - content.code.annotate   # (Opcional) Anotaciones dentro del código
+
+# Plugins del sistema
+plugins:
+  - search
+  # - tags                    # (Opcional) Si quieres etiquetar artículos
+
+# Extensiones de Markdown (La parte potente para programadores)
+markdown_extensions:
+  # Metadatos en los archivos (YAML front matter)
+  - meta
+
+  # Tablas avanzadas
+  - tables
+
+  # Listas de definición y atributos HTML
+  - def_list
+  - attr_list
+
+  # Emojis (con soporte para iconos de FontAwesome y Material)
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # --- CONFIGURACIÓN DE CÓDIGO ---
+  - pymdownx.highlight:
+      anchor_linenums: true   # Enlaces a líneas específicas
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite     # Resaltado en línea (`code`)
+  - pymdownx.snippets         # Permite incrustar archivos externos (--8<--)
+  - pymdownx.superfences:     # Bloques avanzados y anidados
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # --- ELEMENTOS DIDÁCTICOS ---
+  - pymdownx.tabbed:          # Pestañas de contenido
+      alternate_style: true 
+  - pymdownx.details          # Desplegables (soluciones ocultas)
+  - admonition                # Bloques de aviso (Note, Warning, Tip...)
+
+  # Matemáticas (MathJax) - Descomentar si usas fórmulas
+  # - pymdownx.arithmatex:
+  #     generic: true
+
+# Configuración extra para Javascript (necesario para Mermaid/MathJax)
+extra_javascript:
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+
+extra_css:
+  - stylesheets/extra.css

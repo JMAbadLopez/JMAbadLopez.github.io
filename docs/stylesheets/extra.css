@@ -1,0 +1,84 @@
+/* --- 1. AJUSTES GENERALES Y TIPOGRAFÍA --- */
+:root {
+  --md-primary-fg-color: #5c6bc0; /* Un índigo suave pero profesional */
+  --md-accent-fg-color: #ff4081;  /* Un rosa vibrante para los acentos */
+}
+
+/* Títulos más elegantes */
+.md-typeset h1 {
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+  border-bottom: 2px solid var(--md-primary-fg-color--light);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.md-typeset h2 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  border-left: 5px solid var(--md-primary-fg-color);
+  padding-left: 10px;
+}
+
+/* --- 2. BLOQUES DE CÓDIGO (VITAMINADOS) --- */
+/* Bordes redondeados y sombra suave para que "floten" */
+.md-typeset pre > code {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Botón de copiar más visible al pasar el ratón */
+.md-clipboard:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* --- 3. TECLAS (KBD) --- */
+/* Estilo para atajos de teclado como Ctrl + C */
+.md-typeset kbd {
+  border-radius: 4px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background-color: var(--md-default-bg-color--lighter);
+  box-shadow: 0 2px 0 var(--md-default-fg-color--lighter);
+  font-size: 0.85em;
+  padding: 0.1em 0.4em;
+}
+
+/* --- 4. TABLAS MODERNAS --- */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  display: inline-block; /* Ajuste para scroll horizontal en móvil */
+  max-width: 100%;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: white !important; /* Forzar texto blanco en cabeceras */
+  font-weight: bold;
+}
+
+/* --- 5. ADMONITIONS (AVISOS) --- */
+/* Hacerlos un poco más "pop" */
+.md-typeset .admonition, 
+.md-typeset details {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* --- 6. SCROLLBAR PERSONALIZADO (Chrome/Edge/Safari) --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--md-default-bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-primary-fg-color);
+}
